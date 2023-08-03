@@ -1,3 +1,5 @@
+@file:Suppress("PrivatePropertyName")
+
 package ru.nb.m3test.ui.theme
 
 import android.app.Activity

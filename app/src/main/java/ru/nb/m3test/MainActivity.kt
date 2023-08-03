@@ -3,10 +3,9 @@ package ru.nb.m3test
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import ru.nb.m3test.ui.theme.M3testTheme
 
 class MainActivity : ComponentActivity() {
@@ -14,8 +13,20 @@ class MainActivity : ComponentActivity() {
 		super.onCreate(savedInstanceState)
 		setContent {
 			M3testTheme {
-				Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-					MainScreen()
+				val navController = rememberNavController()
+				NavHost(
+					navController = navController,
+					startDestination = "button"
+				) {
+
+					composable("main") {
+						MainScreen(onBack = { navController.popBackStack() })
+					}
+					composable("button") {
+						ButtonScreen(
+							onMainScreen = { navController.navigate("main") }
+						)
+					}
 				}
 			}
 		}

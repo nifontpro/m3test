@@ -18,6 +18,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -30,7 +31,8 @@ fun ButtonScreen(
 		verticalArrangement = Arrangement.Center
 	) {
 
-		Button(onClick = onMainScreen) {
+		Button(onClick = onMainScreen,
+			modifier = Modifier.testTag("main")) {
 			Text(text = "Main screen")
 		}
 

@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
@@ -85,7 +86,9 @@ fun MainScreen(onBack: () -> Unit) {
 @Composable
 fun CustomList(paddingValues: PaddingValues) {
 	LazyColumn(
-		modifier = Modifier.padding(paddingValues)
+		modifier = Modifier
+			.padding(paddingValues)
+			.testTag("list")
 	) {
 		items(100) {
 			Text(

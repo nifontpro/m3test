@@ -7,8 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ru.nb.m3test.ui.theme.M3testTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -32,8 +34,16 @@ fun MainContent() {
 			}
 			composable("button") {
 				ButtonScreen(
-					onMainScreen = { navController.navigate("main") }
+					onMainScreen = { navController.navigate("main") },
+					onBottomScreen = { navController.navigate("bottom") },
+					onFlowScreen = { navController.navigate("flow") },
 				)
+			}
+			composable("bottom") {
+				BottomNavScreen(onBack = { navController.popBackStack() })
+			}
+			composable("flow") {
+				FlowScreen()
 			}
 		}
 	}

@@ -23,7 +23,9 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ButtonScreen(
-	onMainScreen: () -> Unit
+	onMainScreen: () -> Unit,
+	onBottomScreen: () -> Unit,
+	onFlowScreen: () -> Unit
 ) {
 	Column(
 		modifier = Modifier.fillMaxSize(),
@@ -31,30 +33,32 @@ fun ButtonScreen(
 		verticalArrangement = Arrangement.Center
 	) {
 
-		Button(onClick = onMainScreen,
-			modifier = Modifier.testTag("main")) {
+		Button(
+			onClick = onMainScreen,
+			modifier = Modifier.testTag("main")
+		) {
 			Text(text = "Main screen")
 		}
 
-		ElevatedButton(onClick = {}) {
+		ElevatedButton(onClick = onBottomScreen) {
 			Icon(
 				imageVector = Icons.Default.Add,
-				contentDescription = "add to card",
+				contentDescription = "Bottom Nav screen",
 				modifier = Modifier.size(18.dp)
 			)
 			Spacer(modifier = Modifier.width(8.dp))
-			Text(text = "Add to card")
+			Text(text = "Bottom Nav screen")
 		}
 
-		FilledTonalButton(onClick = {  }) {
-			Text("Open in browser")
+		FilledTonalButton(onClick = onFlowScreen) {
+			Text("Test flow")
 		}
 
-		OutlinedButton(onClick = {  }) {
+		OutlinedButton(onClick = { }) {
 			Text("Outlined Button")
 		}
 
-		TextButton(onClick = {  }) {
+		TextButton(onClick = { }) {
 			Text("Text Button")
 		}
 
